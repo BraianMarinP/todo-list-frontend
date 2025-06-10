@@ -1,0 +1,79 @@
+.task-panel {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    background-color: var(--surface-color);
+    height: 6vw;
+    width: 60vw;
+    min-height: 80px;
+    border-radius: 10px;
+    padding-inline: 20px;
+}
+
+.task-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.task-text {
+    color: var(--text-color);
+    margin: 0;
+    font-size: 30px;
+    text-align: left;
+}
+
+.circle-btn {
+    border-radius: 50%;
+    border-color: var(--text-color);
+    border-style: solid;
+    
+    background-color: transparent;
+    color: var(--text-color);
+    padding: 5px;
+}
+
+.circle-btn:hover {
+    border-color: var(--primary-color);
+    color: var(--background-color);
+    background-color: var(--primary-color);
+}
+
+.circle-btn:active {
+    transform: scale(0.95);
+}
+
+.circle-btn:focus {
+    outline: none;
+}
+
+.delete-btn {
+    background: transparent;
+    border-radius: 50%;
+    border-style: solid;
+    border-color: transparent;
+
+    cursor: pointer;
+    color: var(--secondary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    padding: 5px;
+}
+
+.delete-btn:hover {
+    border-color: var(--secondary-color);
+    color: var(--background-color);
+    background-color: var(--secondary-color);
+}
+
+.delete-btn:active {
+    transform: scale(0.95);
+}
+
+.delete-btn:focus {
+    outline: none;
+}
+

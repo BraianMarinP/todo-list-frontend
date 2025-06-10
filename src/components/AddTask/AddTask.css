@@ -1,0 +1,49 @@
+.add-task-panel {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    background-color: var(--border-color);
+    height: 6vw;
+    width: 60vw;
+    min-height: 80px;
+    border-radius: 30px;
+    padding-inline: 20px;
+}
+
+.add-button {
+    aspect-ratio: 1/1;
+    border-style: solid;
+    display: flex;
+    border-radius: 50%;
+    align-items: center;
+    margin-left: auto;
+    color: var(--primary-color);
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.add-button:hover {
+    border-color: var(--primary-color);
+    color: var(--background-color);
+    background-color: var(--primary-color);
+}
+
+.input {
+    outline: none;
+    border: none;
+    width: 95%;
+    background-color: transparent;
+    font-size: 26pt;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.input::placeholder {
+    color: var(--text-secondary-color);
+}
+
+.char-count {
+    color: var(--text-secondary-color);
+    margin-inline: 5px;
+}

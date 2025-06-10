@@ -1,0 +1,32 @@
+:root {
+  --background-color: #121212;
+  --surface-color: #282828;
+  --primary-color: #bb86fc;  /* morado suave */
+  --secondary-color: #03dac6; /* verde menta */
+  --accent-color: #ff4081;   /* rosa fuerte para elementos destacados */
+  --text-color: #e0e0e0;     /* texto principal */
+  --text-secondary-color: #b0b0b0; /* texto secundario / desactivado */
+  --border-color: #333333;
+  --error-color: #cf6679;    /* para errores, botones de eliminar, etc. */
+
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background: var(--background-color);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  display: flex;
+  justify-content: center; /* centra horizontalmente */
+  align-items: center;     /* centra verticalmente */
+  height: 100vh;           /* toda la pantalla */
+  margin: 0;
+}

@@ -38,3 +38,18 @@ export const createNewTodo = async (todo: CreateTodoInput): Promise<Todo> =>{
     const data = (await response.json()) as Todo
     return data
 }
+
+export const deleteTodo = async (id: number): Promise<number> => {
+    const response = await fetch(`${BASE_URL}/${id}`, {
+        method: 'DELETE'
+    })
+    if (response.status !== 204) throw new Error('Failed to delete task.')
+    return id
+}
+
+export const deleteAllTodos = async () => {
+    const response = await fetch(`${BASE_URL}/all`, {
+        method: 'DELETE'
+    })
+    if (response.status !== 204) throw new Error('Failed to delete all tasks.')
+}

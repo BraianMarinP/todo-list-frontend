@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
-import AddTask from '../AddTask/AddTask'
-import Task from '../Task/Task'
+import AddTask from '@/components/AddTask/AddTask'
+import Task from '@/components/Task/Task'
 import './TodoList.css'
-import { fetchAllTodos, updateTodo, createNewTodo } from '@/api/todoApi'
+import { fetchAllTodos, updateTodo, createNewTodo, deleteTodo, deleteAllTodos } from '@/api/todoApi'
 import type { Todo } from '@/types/Todo'
 const TodoList = () => {
 
@@ -29,7 +29,7 @@ const TodoList = () => {
                 content={todo.description}
                 completed={todo.completed}
                 onComplete={() => updateTodoState(todo)}
-                onDelete={() => {}}
+                onDelete={() => handleDeleteTodo(todo.id)}
             />
         ))
     }
@@ -61,6 +61,24 @@ const TodoList = () => {
             }
     }
 
+    const handleDeleteTodo = async (todoID: number) => {
+        try {
+            const deletedTodoID = await deleteTodo(todoID)
+            setTodos(prevTodos => prevTodos.filter(todo => todo.id !== deletedTodoID))
+        } catch (error) {
+            console.error('Failed to delete todo:', error)
+        }
+    }
+
+    const handleDeleteAllTodos = async () => {
+        try {
+            await deleteAllTodos()
+            setTodos([])
+        } catch (error) {
+            console.error('Failed to delete all todos:', error)
+        }
+    }
+
     return (
         <div className='todo-list-panel'>
             <AddTask inputValue={inputValue} setInputValue={setInputValue} onAddTask={addTodo}/>
@@ -68,7 +86,7 @@ const TodoList = () => {
             <div className='todo-container'>
                 {getAllTodos()}                
             </div>
-            <button className='delete-all-button'>DELETE ALL</button>
+            <button className='delete-all-button' onClick={handleDeleteAllTodos}>DELETE ALL</button>
         </div>
     )
 }

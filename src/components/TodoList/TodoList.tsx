@@ -2,11 +2,11 @@ import { useEffect, useState } from 'react'
 import AddTask from '../AddTask/AddTask'
 import Task from '../Task/Task'
 import './TodoList.css'
-import { fetchAllTodos, updateTodo } from '@/api/todoApi'
+import { fetchAllTodos, updateTodo, createNewTodo } from '@/api/todoApi'
 import type { Todo } from '@/types/Todo'
-
 const TodoList = () => {
 
+    const [inputValue, setInputValue] = useState('')
     const [todos, setTodos] = useState<Todo[]>([])
 
     const fetchTodos = async () => {
@@ -46,9 +46,24 @@ const TodoList = () => {
         }
     }
 
+    const addTodo = async () => {
+        if (inputValue.trim() != '')
+            try {
+                const newTodo = await createNewTodo({
+                    createdAt: new Date().toISOString(),
+                    updatedAt: new Date().toISOString(),
+                    description: inputValue.trim(),
+                })
+                setTodos(prevTodos => [...prevTodos, newTodo])
+                setInputValue('')
+            } catch (error) {
+                console.log('Failed to add a new task.')
+            }
+    }
+
     return (
         <div className='todo-list-panel'>
-            <AddTask />
+            <AddTask inputValue={inputValue} setInputValue={setInputValue} onAddTask={addTodo}/>
             <br />
             <div className='todo-container'>
                 {getAllTodos()}                

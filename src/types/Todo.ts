@@ -10,3 +10,9 @@ export interface Todo {
 export interface UpdateTodoState {
     completed: boolean;
 }
+
+export interface CreateTodoInput {
+    createdAt: string;
+    updatedAt: string;
+    description: string;
+}

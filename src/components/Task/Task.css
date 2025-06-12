@@ -52,6 +52,13 @@
     transform: scale(1.15);
 }
 
+.circle-btn.completed:active {
+    border-color: var(--text-secondary-color);
+    color: var(--background-color);
+    background-color: var(--text-secondary-color);
+    transform: scale(0.95);
+}
+
 .circle-btn:hover {
     transform: scale(1.15);
     border-color: var(--primary-color);

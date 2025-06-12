@@ -54,7 +54,11 @@ const TodoList = () => {
                     updatedAt: new Date().toISOString(),
                     description: inputValue.trim(),
                 })
-                setTodos(prevTodos => [...prevTodos, newTodo])
+                setTodos(prevTodos => 
+                    [...prevTodos, newTodo].sort((a, b) =>
+                        new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+                    )
+                )
                 setInputValue('')
             } catch (error) {
                 console.log('Failed to add a new task.')

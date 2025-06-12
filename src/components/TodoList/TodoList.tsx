@@ -1,28 +1,37 @@
+import { useEffect, useState } from 'react'
 import AddTask from '../AddTask/AddTask'
 import Task from '../Task/Task'
 import './TodoList.css'
+import { getAllTodos } from '@/api/todoApi'
+import type { Todo } from '@/types/Todo'
 
 const TodoList = () => {
 
-    const getAllTasks = () => {
-        const tasks = [
-            { id: 1, content: 'Esta es una cadena de máximo 50 carácteres para probar.' },
-            { id: 2, content: 'Improve my english level.' },
-            { id: 3, content: 'Learn React basics.' },
-            { id: 4, content: 'Finish TypeScript project.' }, 
-            { id: 5, content: 'Workout 30 minutes.' }
-        ]
+    const [tasks, setTasks] = useState<Todo[]>([])
 
+    const fetchTasks = async () => {
+        try {
+            const todos = await getAllTodos()
+            setTasks(todos)
+        } catch (error) {
+            console.error('Error while fetching tasks:', error)
+        }
+    }
+
+    useEffect(() => {
+        fetchTasks()
+    }, [])
+
+    const getAllTasks = () => {
         return tasks.map(task => (
             <Task
                 key={task.id}
-                content={task.content}
+                content={task.description}
                 onComplete={() => {}}
                 onDelete={() => {}}
             />
         ))
     }
-    
 
     return (
         <div className='todo-list-panel'>

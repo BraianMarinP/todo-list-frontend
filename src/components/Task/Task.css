@@ -24,6 +24,11 @@
     text-align: left;
 }
 
+.task-text.completed {
+    text-decoration: line-through;
+    color: var(--text-secondary-color);
+}
+
 .circle-btn {
     border-radius: 50%;
     border-color: var(--text-color);
@@ -34,7 +39,21 @@
     padding: 5px;
 }
 
+.circle-btn.completed {
+    border-color: var(--text-secondary-color);
+    color: var(--background-color);
+    background-color: var(--text-secondary-color);
+}
+
+.circle-btn.completed:hover {
+    border-color: var(--text-secondary-color);
+    color: var(--background-color);
+    background-color: var(--text-secondary-color);
+    transform: scale(1.15);
+}
+
 .circle-btn:hover {
+    transform: scale(1.15);
     border-color: var(--primary-color);
     color: var(--background-color);
     background-color: var(--primary-color);
